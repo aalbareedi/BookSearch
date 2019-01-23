@@ -16,7 +16,9 @@ app.use(express.json());
 // }
 app.use(express.static("client/build"));
 
-var mongoURL = process.env.MONGODB_URI || "mongodb://localhost/article_db";
+console.log("this is our process.env!@!!!!!!!!", process.env);
+
+var mongoURL = process.env.MONGODB_URI;
 
 mongoose.connect(
   mongoURL,
