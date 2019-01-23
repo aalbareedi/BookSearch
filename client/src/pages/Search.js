@@ -32,12 +32,11 @@ class Search extends Component {
 
   saveBook = bookObj => {
     API.saveBook(bookObj)
-      .then(
-        res =>
-          (this.state.books = this.state.books.filter(
-            b => b.title != bookObj.title
-          ))
-      )
+      .then(res => {
+        this.setState({
+          books: this.state.books.filter(b => b.title != bookObj.title)
+        });
+      })
       .catch(err => console.log(err));
   };
 
@@ -75,7 +74,7 @@ class Search extends Component {
                         name="title"
                         value={this.state.title}
                         onChange={this.handleInputChange}
-                        placeholder="Search For a Recipe"
+                        placeholder="Search For a Book"
                       />
                     </Col>
                     <Col size="xs-3 sm-2">
@@ -93,68 +92,56 @@ class Search extends Component {
               </form>
             </Col>
           </Row>
-          <Row>
-            <Col size="xs-12">
-              <h1>Saved Books Here</h1>
-            </Col>
-          </Row>
           <BookList>
-            {this.state.books.length === 0 ? (
-              <EmptyResult />
-            ) : (
-              this.state.books.map(reci => (
-                <BookSearchItem key={reci.id}>
-                  <Container>
-                    <Row>
-                      <Col size="xs-4 sm-2">
-                        <Thumbnail src={reci.volumeInfo.imageLinks.thumbnail} />
-                      </Col>
-                      <Col size="xs-6 sm-9">
-                        <h3>{reci.volumeInfo.title}</h3>
-                        <p>
-                          Written By{" "}
-                          {reci.volumeInfo.authors != undefined &&
-                          reci.volumeInfo.authors.length
-                            ? reci.volumeInfo.authors.join(", ")
-                            : ""}
-                        </p>
-                        <p>{reci.volumeInfo.description}</p>
-                        <a
-                          rel="noreferrer noopener"
-                          target="_blank"
-                          href={reci.volumeInfo.canonicalVolumeLink}
-                        >
-                          Go to the book!
-                        </a>
-                      </Col>
-                    </Row>
+            {this.state.books.length === 0
+              ? ""
+              : this.state.books.map(reci => (
+                  <BookSearchItem key={reci.id}>
+                    <Container>
+                      <Row>
+                        <Col size="xs-4 sm-2">
+                          <Thumbnail
+                            src={reci.volumeInfo.imageLinks.thumbnail}
+                          />
+                        </Col>
+                        <Col size="xs-6 sm-9">
+                          <h3>{reci.volumeInfo.title}</h3>
+                          <p>
+                            Written By{" "}
+                            {reci.volumeInfo.authors != undefined &&
+                            reci.volumeInfo.authors.length
+                              ? reci.volumeInfo.authors.join(", ")
+                              : ""}
+                          </p>
+                          <p>{reci.volumeInfo.description}</p>
+                        </Col>
+                      </Row>
 
-                    <SaveBtn
-                      onClick={() =>
-                        this.saveBook({
-                          author: reci.volumeInfo.authors.length
-                            ? reci.volumeInfo.authors
-                            : [],
-                          title: reci.volumeInfo.title,
-                          description: reci.volumeInfo.description,
-                          link: reci.volumeInfo.canonicalVolumeLink,
-                          image: reci.volumeInfo.imageLinks.thumbnail
-                        })
-                      }
-                    />
-                    <ViewBtn>
-                      <a
-                        href={reci.volumeInfo.canonicalVolumeLink}
-                        target="_blank"
-                      >
-                        {" "}
-                        View{" "}
-                      </a>
-                    </ViewBtn>
-                  </Container>
-                </BookSearchItem>
-              ))
-            )}
+                      <SaveBtn
+                        onClick={() =>
+                          this.saveBook({
+                            author: reci.volumeInfo.authors.length
+                              ? reci.volumeInfo.authors
+                              : [],
+                            title: reci.volumeInfo.title,
+                            description: reci.volumeInfo.description,
+                            link: reci.volumeInfo.canonicalVolumeLink,
+                            image: reci.volumeInfo.imageLinks.thumbnail
+                          })
+                        }
+                      />
+                      <ViewBtn>
+                        <a
+                          href={reci.volumeInfo.canonicalVolumeLink}
+                          target="_blank"
+                        >
+                          {" "}
+                          View{" "}
+                        </a>
+                      </ViewBtn>
+                    </Container>
+                  </BookSearchItem>
+                ))}
           </BookList>
         </Container>
       </div>

@@ -7,7 +7,6 @@ const app = express();
 const routes = require("./routes");
 
 const mongoose = require("mongoose");
-// Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
@@ -16,9 +15,7 @@ app.use(express.json());
 // }
 app.use(express.static("client/build"));
 
-console.log("this is our process.env!@!!!!!!!!", process.env);
-
-var mongoURL = process.env.MONGODB_URI;
+var mongoURL = process.env.MONGODB_URI; // || "mongodb://localhost/readingDatabase";
 
 mongoose.connect(
   mongoURL,
