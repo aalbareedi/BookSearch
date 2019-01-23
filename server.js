@@ -14,6 +14,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+var mongoURL = process.env.MONGODB_URI || "mongodb://localhost/article_db";
+
+mongoose.connect(
+  mongoURL,
+  { useNewUrlParser: true }
+);
+
 // Use routes
 app.use(routes);
 
