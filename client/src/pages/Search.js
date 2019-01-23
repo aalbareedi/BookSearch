@@ -113,7 +113,8 @@ class Search extends Component {
                         <h3>{reci.volumeInfo.title}</h3>
                         <p>
                           Written By{" "}
-                          {reci.volumeInfo.authors.length
+                          {reci.volumeInfo.authors != undefined &&
+                          reci.volumeInfo.authors.length
                             ? reci.volumeInfo.authors.join(", ")
                             : ""}
                         </p>

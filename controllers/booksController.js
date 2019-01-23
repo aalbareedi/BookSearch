@@ -3,12 +3,12 @@ const axios = require("axios");
 // https://www.googleapis.com/books/v1/volumes?q=weight&printType=books&key=AIzaSyAxnTPgeERGv-ATrD-BSBLWQUc1apLv_rA
 const GOOGLE_BOOKS_API =
   "https://www.googleapis.com/books/v1/volumes?&printType=books";
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 // This file empties the Books collection and inserts the books below
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/readingDatabase"
-);
+// mongoose.connect(
+//   process.env.MONGODB_URI || "mongodb://localhost/readingDatabase"
+// );
 
 // Defining methods for the booksController
 module.exports = {
