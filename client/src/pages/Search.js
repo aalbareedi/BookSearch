@@ -139,7 +139,6 @@ class Search extends Component {
                                   : ""
                             })
                           }
-                          style="cursor:pointer;"
                         >
                           Save{" "}
                         </a>
