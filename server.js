@@ -15,7 +15,7 @@ app.use(express.json());
 // }
 app.use(express.static("client/build"));
 
-var mongoURL = process.env.MONGODB_URI; // || "mongodb://localhost/readingDatabase";
+var mongoURL = process.env.MONGODB_URI; //  || "mongodb://localhost/readingDatabase";
 
 mongoose.connect(
   mongoURL,
