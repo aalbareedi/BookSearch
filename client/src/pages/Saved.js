@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import EmptyResult from "../components/EmptyResult";
-import Input from "../components/Input";
-import Button from "../components/Button";
 import { BookList } from "../components/BookList";
 import { BookSearchItem } from "../components/BookSearchItem";
 import { Container, Row, Col } from "../components/Grid";
@@ -66,13 +64,6 @@ class Saved extends Component {
                             : ""}
                         </p>
                         <p>{bookFromDb.description}</p>
-                        <a
-                          rel="noreferrer noopener"
-                          target="_blank"
-                          href={bookFromDb.link}
-                        >
-                          Go to the book!
-                        </a>
                       </Col>
                     </Row>
 

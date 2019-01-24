@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import EmptyResult from "../components/EmptyResult";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { BookList } from "../components/BookList";
@@ -70,7 +69,7 @@ class Search extends Component {
                 <Container>
                   <h3>Book Search</h3>
                   <Row>
-                    <Col size="xs-9">
+                    <Col size="md-9">
                       <Input
                         name="title"
                         value={this.state.title}
@@ -78,7 +77,9 @@ class Search extends Component {
                         placeholder="Search For a Book"
                       />
                     </Col>
-                    <Col size="xs-3">
+                  </Row>
+                  <Row>
+                    <Col size="md-3">
                       <Button
                         //  /*  onClick={() =>this.handleFormSubmit /*this.loadBooks(this.state.title)*/}*/
                         onClick={this.handleFormSubmit}
@@ -122,23 +123,25 @@ class Search extends Component {
                         </Col>
                       </Row>
 
-                      <SaveBtn
-                        onClick={() =>
-                          this.saveBook({
-                            author: reci.volumeInfo.authors.length
-                              ? reci.volumeInfo.authors
-                              : [],
-                            title: reci.volumeInfo.title,
-                            description: reci.volumeInfo.description,
-                            link: reci.volumeInfo.canonicalVolumeLink,
-                            image:
-                              reci.volumeInfo.imageLinks !== undefined
-                                ? reci.volumeInfo.imageLinks.thumbnail
-                                : ""
-                          })
-                        }
-                      >
-                        <a>Save </a>
+                      <SaveBtn>
+                        <a
+                          onClick={() =>
+                            this.saveBook({
+                              author: reci.volumeInfo.authors.length
+                                ? reci.volumeInfo.authors
+                                : [],
+                              title: reci.volumeInfo.title,
+                              description: reci.volumeInfo.description,
+                              link: reci.volumeInfo.canonicalVolumeLink,
+                              image:
+                                reci.volumeInfo.imageLinks !== undefined
+                                  ? reci.volumeInfo.imageLinks.thumbnail
+                                  : ""
+                            })
+                          }
+                        >
+                          Save{" "}
+                        </a>
                       </SaveBtn>
                       <ViewBtn>
                         <a

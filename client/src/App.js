@@ -3,13 +3,7 @@ import Jumbotron from "./components/Jumbotron";
 import Nav from "./components/Nav";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
-import {
-  BrowserRouter as Router,
-  Link,
-  NavLink,
-  Redirect,
-  Prompt
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Route from "react-router-dom/Route";
 
 class App extends Component {
@@ -19,7 +13,6 @@ class App extends Component {
         <div>
           <Nav />
           <Jumbotron />
-
           <Route
             path="/"
             exact
