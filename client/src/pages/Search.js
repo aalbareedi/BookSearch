@@ -68,8 +68,9 @@ class Search extends Component {
             <Col size="md-12">
               <form>
                 <Container>
+                  <h3>Book Search</h3>
                   <Row>
-                    <Col size="xs-9 sm-10">
+                    <Col size="xs-9">
                       <Input
                         name="title"
                         value={this.state.title}
@@ -77,7 +78,7 @@ class Search extends Component {
                         placeholder="Search For a Book"
                       />
                     </Col>
-                    <Col size="xs-3 sm-2">
+                    <Col size="xs-3">
                       <Button
                         //  /*  onClick={() =>this.handleFormSubmit /*this.loadBooks(this.state.title)*/}*/
                         onClick={this.handleFormSubmit}
@@ -101,7 +102,11 @@ class Search extends Component {
                       <Row>
                         <Col size="xs-4 sm-2">
                           <Thumbnail
-                            src={reci.volumeInfo.imageLinks.thumbnail}
+                            src={
+                              reci.volumeInfo.imageLinks !== undefined
+                                ? reci.volumeInfo.imageLinks.thumbnail
+                                : ""
+                            }
                           />
                         </Col>
                         <Col size="xs-6 sm-9">
@@ -126,16 +131,20 @@ class Search extends Component {
                             title: reci.volumeInfo.title,
                             description: reci.volumeInfo.description,
                             link: reci.volumeInfo.canonicalVolumeLink,
-                            image: reci.volumeInfo.imageLinks.thumbnail
+                            image:
+                              reci.volumeInfo.imageLinks !== undefined
+                                ? reci.volumeInfo.imageLinks.thumbnail
+                                : ""
                           })
                         }
-                      />
+                      >
+                        <a>Save </a>
+                      </SaveBtn>
                       <ViewBtn>
                         <a
                           href={reci.volumeInfo.canonicalVolumeLink}
                           target="_blank"
                         >
-                          {" "}
                           View{" "}
                         </a>
                       </ViewBtn>

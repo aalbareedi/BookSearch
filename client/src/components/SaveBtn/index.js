@@ -3,11 +3,11 @@ import "./style.css";
 
 // The ...props means, spread all of the passed props onto this element
 // That way we don't have to define them all individually
-function SaveBtn(props) {
+function SaveBtn({ children }) {
   return (
-    <button className="save-btn" {...props} role="button" tabIndex="0">
-      Save
-    </button>
+    <span className="view-btn" role="button" tabIndex="0">
+      {children}
+    </span>
   );
 }
 
